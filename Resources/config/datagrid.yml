@@ -1,0 +1,92 @@
+datagrid:
+    tracking-events-grid-to-webcustomer:
+        source:
+            type: orm
+            acl_resource: oro_tracking_website_view
+            query:
+                select:
+                    - e.id
+                    - e.name
+                    - e.value
+                    - e.userIdentifier
+                    - e.url
+                    - e.title
+                    - e.code
+                    - e.loggedAt
+                    - e.urlref
+                    - e.res
+                from:
+                    - { table: %oro_tracking.tracking_event.class%, alias: e }
+        columns:
+            name:
+                label: oro.tracking.trackingevent.name.label
+            value:
+                label: oro.tracking.trackingevent.value.label
+            userIdentifier:
+                label: oro.tracking.trackingevent.userIdentifier.label
+            url:
+                type: twig
+                label: oro.tracking.trackingevent.url.label
+                frontend_type: html
+                template: OroTrackingBundle:TrackingEvent:Property/url.html.twig
+            code:
+                label: oro.tracking.trackingevent.code.label
+            loggedAt:
+                label: oro.tracking.trackingevent.logged_at.label
+                frontend_type: datetime
+            urlref:
+                label: urlref
+            res:
+                label: resolution
+        sorters:
+            columns:
+                name:
+                    data_name: e.name
+                value:
+                    data_name: e.value
+                userIdentifier:
+                    data_name: e.userIdentifier
+                code:
+                    data_name: e.code
+                loggedAt:
+                    data_name: e.loggedAt
+            default:
+                loggedAt: DESC
+        filters:
+            columns:
+                name:
+                    type:      string
+                    data_name: e.name
+                value:
+                    type:      string
+                    data_name: e.value
+                userIdentifier:
+                    type:      string
+                    data_name: e.userIdentifier
+                code:
+                    type:      string
+                    data_name: e.code
+                loggedAt:
+                    type:      datetime
+                    data_name: e.loggedAt
+                urlref:
+                    type:      string
+                    data_name: e.urlref
+                res:
+                    type:      string
+                    data_name: e.res
+        properties:
+            id: ~
+
+    website-tracking-events-grid-to-webcustomer:
+        extends: tracking-events-grid-to-webcustomer
+        source:
+            query:
+                join:
+                    inner:
+                        - { join: e.website, alias: w }
+                where:
+                    and:
+                        - e.userIdentifier LIKE :originId
+            bind_parameters:
+                - originId
