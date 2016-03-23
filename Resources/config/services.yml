@@ -1,6 +1,0 @@
-parameters:
-    # Entities
-    orocrm_magento.customer.entity.class:                                       OroCRM\Bundle\MagentoBundle\Entity\Customer
-
-services:
-#
