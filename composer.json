@@ -20,5 +20,6 @@
         "oro/platform": "1.*",
         "oro/crm": "1.*"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
