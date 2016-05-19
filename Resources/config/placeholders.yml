@@ -6,3 +6,4 @@ items:
     demacmedia_trackedevents_view:
         template: DemacMediaTrackedEventsUserBundle:TrackedEvents:events.html.twig
         applicable: @oro_ui.placeholder.filter->isInstanceOf($entity$, %orocrm_magento.entity.customer.class%)
+

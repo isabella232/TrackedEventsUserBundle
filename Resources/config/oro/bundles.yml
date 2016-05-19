@@ -1,3 +1,2 @@
-# src/DemacMedia/Bundle/TrackedEventsUserBundles/Resources/config/oro/bundles.yml
 bundles:
     - DemacMedia\Bundle\TrackedEventsUserBundle\DemacMediaTrackedEventsUserBundle
